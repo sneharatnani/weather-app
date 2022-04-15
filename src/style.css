@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+  background-color: lightblue;
+}
+
+main {
+  margin: 1rem auto;
+  width: 45vw;
+  background: white;
+  padding: 2rem;
+}
+
+.location {
+  text-align: initial;
+  display: flex;
+  justify-content: space-between;
+}
+
+.city-country {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.day {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.icon {
+  margin-top: -2rem;
+}
