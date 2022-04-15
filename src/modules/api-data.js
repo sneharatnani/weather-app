@@ -1,16 +1,19 @@
 async function getData(city) {
   try {
     let response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=9814c6dc9ff4e95b4f19390d2a44256d`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=9814c6dc9ff4e95b4f19390d2a44256d`,
+      { mode: "cors" }
     );
 
     // check for error from response
     if (!response.ok) {
-      return new Error(response.status);
+      let errorContainer = document.querySelector(".error");
+      errorContainer.textContent = "Not found please try again";
+      //   return new Error(response.status);
     }
     let jsonData = await response.json();
     /* return the required data */
-    return jsonData; /*  {
+    return {
       city: jsonData.name,
       country: jsonData.sys.country,
       temp: jsonData.main.temp,
@@ -18,7 +21,7 @@ async function getData(city) {
       description: jsonData.weather[0].main,
       iconCode: jsonData.weather[0].icon,
       humidity: jsonData.main.humidity,
-    }; */
+    };
   } catch (err) {
     throw new Error(err);
   }

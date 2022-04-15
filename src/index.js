@@ -1,35 +1,54 @@
-// async function showApi(url) {
-//   try {
-//     let response = await fetch(url, { mode: "cors" });
-//     if (!response.ok) {
-//       return new Error("data not found");
-//     }
-//     let data = await response.json();
-//     return data;
-//   } catch (err) {
-//     throw new Error(err);
-//   }
-// }
-
-// showApi(
-//   "http://api.openweathermap.org/data/2.5/weather?q=mahuva&APPID=9814c6dc9ff4e95b4f19390d2a44256d"
-// )
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err));
-
-// image.src = "http://openweathermap.org/img/w/01d.png";
-
 import getData from "./modules/api-data.js";
+import { cToF } from "./modules/converters.js";
+import { fToC } from "./modules/converters.js";
+import { kelvinToCelsius } from "./modules/converters.js";
 import "./style.css";
-let image = document.querySelector(".icon");
-let para = document.querySelector("p");
-function showImg(code) {
-  image.src = `http://openweathermap.org/img/wn/${code}@2x.png`;
+
+let showDay = () => {
+  let dayList = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
+  let today = dayList[new Date().getDay()];
+  return today;
+};
+
+function showError() {
+  let errorContainer = document.querySelector(".error");
+  errorContainer.textContent = "Not found please try again";
 }
 
-getData("amazon")
-  .then((data) => data.weather[0].icon)
-  .then((icon) => {
-    showImg(icon);
+async function showData(obj) {
+  let icon = document.querySelector(".icon");
+  icon.src = `http://openweathermap.org/img/wn/${obj.iconCode}@2x.png`;
+
+  let city = document.querySelector(".city-country");
+  city.textContent = `${obj.city}, ${obj.country}`;
+
+  let today = document.querySelector(".day");
+  today.textContent = showDay();
+
+  let temp = document.querySelector(".temp");
+  temp.textContent = kelvinToCelsius(obj.temp);
+
+  let feelsLike = document.querySelector(".feels-like");
+  feelsLike.textContent = `feels like ${kelvinToCelsius(obj.feelsLike)}`;
+
+  let humidity = document.querySelector(".humidity");
+  humidity.textContent = `humidity ${obj.humidity}%`;
+}
+
+// showData();
+getData("mahuva")
+  .then((d) => {
+    showData(d);
   })
-  .catch((err) => (para.textContent = err));
+  .catch(() => {
+    let errorContainer = document.querySelector(".error");
+    errorContainer.textContent = "Not found please try again";
+  });
