@@ -1,9 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><script defer src="main.js"></script></head>
+  <link rel="icon" href="favicon-32x32.png"><script defer src="main.js"></script></head>
   <body>
+    <header>
+      <h1>Weather App</h1>
+    </header>
+    <!-- search bar -->
+    <div>
+      <input type="text" required />
+      <button class="search">search</button>
+    </div>
+    <main>
+      <section class="location">
+        <!-- icon -->
+        <img src="" alt="Weather icon" class="icon" />
+
+        <!-- location -->
+        <div>
+          <p class="city-country">Talaja, IN</p>
+          <p class="day">Firday</p>
+        </div>
+      </section>
+      <!-- temp -->
+      <div>
+        <h1 class="temp">9 C</h1>
+        <!-- toggler -->
+        <p>f/c</p>
+      </div>
+      <!-- extra info -->
+      <div>
+        <p class="feels-like">feels-like 37 C</p>
+        <p class="humidity">humidity 7</p>
+      </div>
+    </main>
+    <!-- footer -->
+    <footer></footer>
   </body>
 </html>
