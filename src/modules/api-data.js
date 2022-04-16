@@ -1,4 +1,4 @@
-import { showError, getDayName } from "../index.js";
+import { showError, getDayName } from "./utility.js";
 
 async function getData(city) {
   try {

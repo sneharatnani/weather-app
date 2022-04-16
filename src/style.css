@@ -5,14 +5,70 @@
 
 body {
   text-align: center;
-  background-color: lightblue;
+  background-color: #8bc6ec;
+  background-image: linear-gradient(103deg, #8bc6ec 0%, #9599e2 100%);
 }
 
-main {
+button {
+  cursor: pointer;
+}
+
+header {
+  margin: 1.2rem 0;
+  font-size: 1.2rem;
+}
+
+/* search bar */
+.search-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.status {
+  background: transparent;
+  border: none;
+}
+
+.location-icon {
+  width: 2rem;
+  margin-bottom: -0.8rem;
+}
+
+.cityNameInput {
+  height: 2rem;
+  background: transparent;
+  width: 35vw;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 1.3rem;
+  margin: 0 5px;
+}
+
+.cityNameInput:focus {
+  animation: zoomIn;
+  animation-duration: 0.5s;
+  outline: none;
+  border-bottom: 2px solid white;
+}
+
+.search {
+  background: transparent;
+  border: none;
+}
+
+.search img {
+  width: 2.1rem;
+  margin-bottom: -0.8rem;
+}
+/* main */
+.main {
   margin: 1rem auto;
   width: 45vw;
-  background: white;
+  background: #ffffff3b;
   padding: 2rem;
+  border-radius: 1rem;
 }
 
 .location {
@@ -28,9 +84,39 @@ main {
 
 .day {
   font-size: 1.2rem;
-  font-weight: bold;
+  text-transform: capitalize;
 }
 
 .icon {
   margin-top: -2rem;
+}
+
+.temp {
+  padding: 1rem;
+  font-size: 4rem;
+}
+
+.feels-like,
+.humidity {
+  font-size: 1.3rem;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.feels-like {
+  border-right: 2px solid black;
+  padding-right: 10px;
+}
+
+.humidity {
+  padding-left: 5px;
+}
+
+.visible {
+  animation: zoomInDown;
+  animation-duration: 1s;
+}
+
+.hide {
+  visibility: hidden;
 }

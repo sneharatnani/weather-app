@@ -1,5 +1,5 @@
-import { showError, showData } from "../index.js";
-import { kelvinToCelsius as kToC } from "./converters.js";
+import { showData } from "../index.js";
+import { kelvinToCelsius as kToC, showError } from "./utility.js";
 
 function getCurrentLocation() {
   if (!navigator.geolocation) {
