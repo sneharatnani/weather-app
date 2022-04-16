@@ -1,7 +1,5 @@
 let kelvinToCelsius = (kelvin) => `${Math.round(kelvin - 273.15)}°C`;
 
-let cToF = (celsius) => `${celsius * (9 / 5) + 32}°F`;
+let kelvinToFahrenheit = (kelvin) => `${1.8 * (kelvin - 273) + 32}°F`;
 
-let fToC = (f) => `${((f - 32) * 5) / 9}°C`;
-
-export { kelvinToCelsius, cToF, fToC };
+export { kelvinToCelsius, kelvinToFahrenheit };

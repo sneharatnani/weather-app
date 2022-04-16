@@ -1,10 +1,18 @@
-import getData from "./modules/api-data.js";
-import { cToF } from "./modules/converters.js";
-import { fToC } from "./modules/converters.js";
-import { kelvinToCelsius } from "./modules/converters.js";
+import { getData, displayWeather } from "./modules/api-data.js";
+import {
+  kelvinToCelsius as kToC,
+  kelvinToFahrenheit as kToF,
+} from "./modules/converters.js";
+import locationIcon from "./assets/location.svg";
+import getLocation from "./modules/current-status.js";
 import "./style.css";
 
-let showDay = () => {
+let locationImg = document.querySelector(".location-icon");
+locationImg.src = locationIcon;
+let statusBtn = document.querySelector(".status");
+statusBtn.addEventListener("click", getLocation);
+
+let getDayName = () => {
   let dayList = [
     "sunday",
     "monday",
@@ -18,37 +26,22 @@ let showDay = () => {
   return today;
 };
 
-function showError() {
+function showError(err) {
   let errorContainer = document.querySelector(".error");
-  errorContainer.textContent = "Not found please try again";
+  errorContainer.textContent = "";
+  errorContainer.textContent = err;
 }
 
-async function showData(obj) {
-  let icon = document.querySelector(".icon");
-  icon.src = `http://openweathermap.org/img/wn/${obj.iconCode}@2x.png`;
-
-  let city = document.querySelector(".city-country");
-  city.textContent = `${obj.city}, ${obj.country}`;
-
-  let today = document.querySelector(".day");
-  today.textContent = showDay();
-
-  let temp = document.querySelector(".temp");
-  temp.textContent = kelvinToCelsius(obj.temp);
-
-  let feelsLike = document.querySelector(".feels-like");
-  feelsLike.textContent = `feels like ${kelvinToCelsius(obj.feelsLike)}`;
-
-  let humidity = document.querySelector(".humidity");
-  humidity.textContent = `humidity ${obj.humidity}%`;
+function showData(city, converter) {
+  getData(city)
+    .then((data) => {
+      displayWeather(data, converter);
+    })
+    .catch(() => {
+      showError("Not found please try again");
+    });
 }
 
-// showData();
-getData("mahuva")
-  .then((d) => {
-    showData(d);
-  })
-  .catch(() => {
-    let errorContainer = document.querySelector(".error");
-    errorContainer.textContent = "Not found please try again";
-  });
+window.onload = () => showData("mahuva", kToC);
+
+export { showError, showData, getDayName };
