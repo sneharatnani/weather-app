@@ -1,6 +1,8 @@
 let kelvinToCelsius = (kelvin) => `${Math.round(kelvin - 273.15)}°C`;
 
-let kelvinToFahrenheit = (kelvin) => `${1.8 * (kelvin - 273) + 32}°F`;
+let celsiusToFahrenheit = (c) => `${Math.round(c * (9 / 5) + 32)}°F`;
+
+let fahrenheitToCelsius = (f) => `${Math.round((f - 32) * (5 / 9))}°C`;
 
 let getDayName = () => {
   let dayList = [
@@ -22,4 +24,10 @@ function showError(err) {
   errorContainer.textContent = err;
 }
 
-export { kelvinToCelsius, kelvinToFahrenheit, getDayName, showError };
+export {
+  kelvinToCelsius,
+  celsiusToFahrenheit,
+  fahrenheitToCelsius,
+  getDayName,
+  showError,
+};
