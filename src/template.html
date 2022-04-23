@@ -7,43 +7,45 @@
     <title>Weather App</title>
   </head>
   <body>
-    <header>
-      <h1>&#127780;Weather App</h1>
-    </header>
-    <!-- search bar -->
-    <div class="search-bar">
-      <button class="status">
-        <img src="" alt="location-icon" class="location-icon" />
-      </button>
-      <input type="text" required class="cityNameInput" />
-      <button class="search"><img src="" alt="search icon" /></button>
-    </div>
-    <main class="hide main">
-      <section class="location">
-        <!-- icon -->
-        <img src="" alt="Weather icon" class="icon" />
+    <div id="container">
+      <header>
+        <h1>&#127780;Weather App</h1>
+      </header>
+      <!-- search bar -->
+      <div class="search-bar">
+        <button class="status">
+          <img src="" alt="location-icon" class="location-icon" />
+        </button>
+        <input
+          type="text"
+          required
+          class="cityNameInput"
+          placeholder="City Name"
+        />
+        <button class="search"><img src="" alt="search icon" /></button>
+      </div>
 
-        <!-- location -->
-        <div>
+      <main class="hide main">
+        <section class="location">
+          <img src="" alt="Weather icon" class="icon" />
           <p class="city-country"></p>
           <p class="day"></p>
+          <!-- toggler -->
+          <button class="toggle">°F</button>
+        </section>
+        <!-- temp -->
+        <div>
+          <h1 class="temp"></h1>
         </div>
-      </section>
-      <!-- temp -->
-      <div>
-        <h1 class="temp"></h1>
-        <!-- toggler -->
-        <button class="toggle">°F</button>
-      </div>
-      <!-- extra info -->
-      <div>
-        <p class="feels-like"></p>
-        <p class="humidity"></p>
-      </div>
-    </main>
+        <!-- extra info -->
+        <div>
+          <p class="feels-like"></p>
+          <p class="humidity"></p>
+        </div>
+      </main>
+    </div>
     <!-- for error -->
     <p class="error"></p>
-    <!-- footer -->
     <footer></footer>
   </body>
 </html>

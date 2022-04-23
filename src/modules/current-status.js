@@ -1,5 +1,5 @@
-import { showData } from "../index.js";
-import { kelvinToCelsius as kToC, showError } from "./utility.js";
+import showData from "../index.js";
+import { showError, kelvinToCelsius } from "./utility.js";
 
 function getCurrentLocation() {
   if (!navigator.geolocation) {
@@ -20,7 +20,7 @@ async function success(position) {
   );
 
   let data = await myLocation.json();
-  showData(data[0].name, kToC);
+  showData(data[0].name, kelvinToCelsius);
 }
 
 // for errors

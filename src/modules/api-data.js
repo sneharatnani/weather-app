@@ -8,7 +8,7 @@ async function getData(city) {
     );
     // check for error from response
     if (!response.ok) {
-      showError("Not found please try again");
+      showError("City not found please try again");
     }
     let jsonData = await response.json();
     /* return the required data */
@@ -27,7 +27,7 @@ async function getData(city) {
 }
 
 // display api data
-function displayWeather(obj, converter) {
+function arrangeData(obj, converter) {
   let icon = document.querySelector(".icon");
   icon.src = `http://openweathermap.org/img/wn/${obj.iconCode}@2x.png`;
 
@@ -46,4 +46,15 @@ function displayWeather(obj, converter) {
   let humidity = document.querySelector(".humidity");
   humidity.textContent = `humidity ${obj.humidity}%`;
 }
-export { getData, displayWeather };
+
+// function showData(city, converter) {
+//   getData(city)
+//     .then((data) => {
+//       arrangeData(data, converter);
+//     })
+//     .catch(() => {
+//       showError("City not found please try again");
+//     });
+// }
+
+export { getData, arrangeData };
