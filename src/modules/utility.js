@@ -19,7 +19,6 @@ let getDayName = () => {
 };
 
 function showError(err) {
-  document.querySelector(".main").classList.add("hide");
   let errorContainer = document.querySelector(".error");
   errorContainer.textContent = "";
   errorContainer.textContent = err;
@@ -36,16 +35,6 @@ function validateInput() {
   return dataInput.value !== "" ? true : false;
 }
 
-function clearTags() {
-  document.querySelector(".icon").src = "";
-  document.querySelector(".weather-description").textContent = "";
-  document.querySelector(".city-country").textContent = "";
-  document.querySelector(".day").textContent = "";
-  document.querySelector(".temp").textContent = "";
-  document.querySelector(".feels-like").textContent = "";
-  document.querySelector(".humidity").textContent = "";
-}
-
 export {
   kelvinToCelsius,
   celsiusToFahrenheit,
@@ -54,5 +43,4 @@ export {
   showError,
   getDigits,
   validateInput,
-  clearTags,
 };

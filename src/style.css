@@ -4,16 +4,15 @@
 }
 
 body {
+  font-family: sans-serif;
   text-align: center;
   background-color: #8bc6ec;
   background-image: linear-gradient(103deg, #8bc6ec 0%, #9599e2 100%);
 }
 
 #container {
-  border: 1px solid white;
-  width: 50vw;
+  width: 29vw;
   margin: 1rem auto;
-  border-radius: 1rem;
 }
 
 button {
@@ -21,58 +20,58 @@ button {
 }
 
 header {
-  margin: 1.2rem 0;
+  font-family: "Libre Baskerville", serif;
+  padding: 1rem 5px;
   font-size: 1.2rem;
+  background-color: black;
+  color: white;
 }
 
 /* search bar */
 .search-bar {
-  border: 2px solid white;
+  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 43vw;
+  width: 25vw;
   height: 2.5rem;
   margin: auto;
+  border-radius: 4px;
+  background: #ffffff5e;
 }
 
-.status {
+.status,
+.search {
   background: transparent;
   border: none;
-  width: 2.5rem;
 }
 
-.location-icon {
-  height: 1.5rem;
+.search,
+.status {
+  height: 100%;
+  width: 2.8rem;
+}
+
+.location-icon,
+.search img {
   width: 1.6rem;
 }
 
 .cityNameInput {
+  width: 100%;
   height: 100%;
   background: transparent;
-  width: 35vw;
   border: none;
-  font-size: 1.3rem;
-  border-right: 2px solid white;
-  border-left: 2px solid white;
+  font-size: 1.1rem;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
   padding-left: 5px;
-  color: white;
 }
 
 .cityNameInput:focus {
   outline: none;
 }
 
-.search {
-  background: transparent;
-  width: 2.5rem;
-  height: 100%;
-  border: none;
-}
-
-.search img {
-  width: 1.6rem;
-}
 /* main */
 .main {
   margin: 2rem auto 0;
@@ -93,7 +92,7 @@ header {
 }
 
 .city-country {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-top: -1.6rem;
 }
@@ -110,21 +109,73 @@ header {
 .toggle {
   position: absolute;
   right: 1rem;
-  top: 1rem;
+  top: 2rem;
   background: transparent;
   border: 1px solid black;
   padding: 5px 10px;
   border-radius: 2rem;
 }
 
+/* toggler */
+input#toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+label div {
+  background: white;
+  width: 3rem;
+  padding: 4px 5px;
+  display: flex;
+  font-size: 12px;
+  border-radius: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .slider {
+  background: lightblue;
+  border-radius: 13px;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.slide-right {
+  animation: slideInLeft;
+  animation-duration: 0.5s;
+  background: lightblue;
+  border-radius: 13px;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-left {
+  animation: slideInRight;
+  animation-duration: 0.5s;
+  background: lightblue;
+  border-radius: 13px;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .temp {
-  padding: 1rem;
+  padding: 1.5rem 0;
   font-size: 4rem;
 }
 
 .feels-like,
 .humidity {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   display: inline-block;
   text-transform: capitalize;
 }
@@ -138,9 +189,14 @@ header {
   padding-left: 5px;
 }
 
-.visible {
+.animate {
   animation: zoomInDown;
   animation-duration: 1s;
+}
+
+.error {
+  font-size: 1.3rem;
+  text-transform: capitalize;
 }
 
 .hide {

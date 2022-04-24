@@ -1,4 +1,4 @@
-import showData from "../index.js";
+import displayWeather from "../index.js";
 import { showError, kelvinToCelsius } from "./utility.js";
 
 function getCurrentLocation() {
@@ -20,7 +20,7 @@ async function success(position) {
   );
 
   let data = await myLocation.json();
-  showData(data[0].name, kelvinToCelsius);
+  displayWeather(data[0].name, kelvinToCelsius);
 }
 
 // for errors

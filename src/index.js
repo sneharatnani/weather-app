@@ -1,5 +1,4 @@
 import "animate.css";
-// import showData from "./modules/api-data.js";
 import { getData, arrangeData } from "./modules/api-data.js";
 import {
   kelvinToCelsius as kToC,
@@ -8,7 +7,6 @@ import {
   showError,
   getDigits,
   validateInput,
-  clearTags,
 } from "./modules/utility.js";
 import getLocation from "./modules/current-status.js";
 import "./style.css";
@@ -20,37 +18,40 @@ document.querySelector(".location-icon").src = locationIcon;
 document.querySelector(".search img").src = searchImg;
 
 // toggle degree
-function toggleDegree() {
+function toggleDegree(e) {
   let temp = document.querySelector(".temp");
   let feelsLike = document.querySelector(".feels-like");
-  let toggleBtn = document.querySelector(".toggle");
+  let fahrenheit = document.querySelector(".fahrenheit");
+  let celsius = document.querySelector(".celsius");
 
-  if (temp.textContent.includes("C")) {
-    toggleBtn.textContent = "°C";
+  if (!e.target.checked) {
     temp.textContent = cToF(getDigits(temp.textContent));
     feelsLike.textContent = `Feels like ${cToF(
       getDigits(feelsLike.textContent)
     )}`;
+    celsius.classList.remove("slide-right");
+    fahrenheit.classList.add("slide-left");
   } else {
-    toggleBtn.textContent = "°F";
     temp.textContent = fToC(getDigits(temp.textContent));
     feelsLike.textContent = `Feels like ${fToC(
       getDigits(feelsLike.textContent)
     )}`;
+    celsius.classList.add("slide-right");
+    fahrenheit.classList.remove("slide-left");
   }
 }
 
-function displayWeather() {
+function showData() {
   document.querySelector(".main").classList.remove("hide");
-  document.querySelector(".main").classList.add("visible");
+  document.querySelector(".main").classList.add("animate");
   document.querySelector(".error").classList.add("hide");
 }
 
-function showData(city, converter) {
+function displayWeather(city, converter) {
   getData(city)
     .then((data) => {
       arrangeData(data, converter);
-      displayWeather();
+      showData();
     })
     .catch(() => {
       showError("City not found please try again");
@@ -61,20 +62,19 @@ function showData(city, converter) {
 let statusBtn = document.querySelector(".status");
 statusBtn.addEventListener("click", getLocation);
 
-let toggleBtn = document.querySelector(".toggle");
-toggleBtn.addEventListener("click", toggleDegree);
+let toggler = document.querySelector("#toggle");
+toggler.addEventListener("click", toggleDegree);
 
 let searchBtn = document.querySelector(".search");
 searchBtn.addEventListener("click", () => {
   let cityName = document.querySelector(".cityNameInput").value;
   if (validateInput()) {
-    showData(cityName, kToC);
+    displayWeather(cityName, kToC);
   } else {
     showError("Please enter a city name");
   }
 });
 
-window.onload = () => showData("new york", kToC);
+window.onload = () => displayWeather("new york", kToC);
 
-// export default displayWeather;
-export default showData;
+export default displayWeather;
