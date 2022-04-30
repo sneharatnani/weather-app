@@ -24,32 +24,23 @@
           type="text"
           required
           class="cityNameInput"
-          placeholder="City Name"
+          placeholder="Search"
         />
         <button class="search"><img src="" alt="search icon" /></button>
       </div>
-
+      <!-- main -->
       <main class="hide main">
-        <section class="location">
-          <img src="" alt="Weather icon" class="icon" />
+        <div class="country-day">
           <p class="city-country"></p>
           <p class="day"></p>
-          <!-- toggler -->
-          <label for="toggle">
-            <input type="checkbox" id="toggle" checked />
-            <div>
-              <span class="fahrenheit">F</span>
-              <span class="celsius slide-right">C</span>
-            </div>
-          </label>
-        </section>
-
+        </div>
         <!-- temp -->
-        <div>
+        <div class="temp-container">
           <h1 class="temp"></h1>
+          <p class="desc"></p>
         </div>
         <!-- extra info -->
-        <div>
+        <div class="extra">
           <p class="feels-like"></p>
           <p class="humidity"></p>
         </div>

@@ -1,4 +1,4 @@
-import { showError, getDayName } from "./utility.js";
+import { showError, getDayName, changeBackground } from "./utility.js";
 
 async function getData(city) {
   try {
@@ -17,7 +17,7 @@ async function getData(city) {
       country: jsonData.sys.country,
       temp: jsonData.main.temp,
       feelsLike: jsonData.main.feels_like,
-      description: jsonData.weather[0].main,
+      description: jsonData.weather[0].description,
       iconCode: jsonData.weather[0].icon,
       humidity: jsonData.main.humidity,
     };
@@ -28,8 +28,10 @@ async function getData(city) {
 
 // display api data
 function arrangeData(obj, converter) {
-  let icon = document.querySelector(".icon");
-  icon.src = `http://openweathermap.org/img/wn/${obj.iconCode}@2x.png`;
+  changeBackground(obj.iconCode);
+  console.log(obj.iconCode);
+  let description = document.querySelector(".desc");
+  description.textContent = obj.description;
 
   let city = document.querySelector(".city-country");
   city.textContent = `${obj.city}, ${obj.country}`;
@@ -46,15 +48,5 @@ function arrangeData(obj, converter) {
   let humidity = document.querySelector(".humidity");
   humidity.textContent = `humidity ${obj.humidity}%`;
 }
-
-// function showData(city, converter) {
-//   getData(city)
-//     .then((data) => {
-//       arrangeData(data, converter);
-//     })
-//     .catch(() => {
-//       showError("City not found please try again");
-//     });
-// }
 
 export { getData, arrangeData };

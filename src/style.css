@@ -6,13 +6,12 @@
 body {
   font-family: sans-serif;
   text-align: center;
-  background-color: #8bc6ec;
-  background-image: linear-gradient(103deg, #8bc6ec 0%, #9599e2 100%);
 }
 
 #container {
-  width: 29vw;
+  width: 25vw;
   margin: 1rem auto;
+  padding: 2rem 1.5rem 1rem;
 }
 
 button {
@@ -29,15 +28,14 @@ header {
 
 /* search bar */
 .search-bar {
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25vw;
+  width: 100%;
   height: 2.5rem;
-  margin: auto;
+  margin: 0 auto;
   border-radius: 4px;
-  background: #ffffff5e;
+  border: 1px solid black;
 }
 
 .status,
@@ -63,7 +61,6 @@ header {
   background: transparent;
   border: none;
   font-size: 1.1rem;
-  border-right: 1px solid black;
   border-left: 1px solid black;
   padding-left: 5px;
 }
@@ -74,108 +71,50 @@ header {
 
 /* main */
 .main {
-  margin: 2rem auto 0;
-  background: #ffffff5e;
-  padding: 2rem;
-  border-radius: 1rem;
-  position: relative;
+  margin: 2.4rem auto;
 }
 
-.location {
+.country-day {
   text-align: initial;
+  border-bottom: 2px solid black;
+  padding-bottom: 1.2rem;
 }
 
-.weather-description {
-  margin-top: -1.2rem;
-  margin-left: 1.2rem;
+/* weather */
+.temp-container {
+  text-align: initial;
+  border-bottom: 2px solid black;
+  padding: 2.5rem 0;
+}
+
+.temp {
+  font-size: 5rem;
+}
+
+.desc {
   text-transform: capitalize;
+  font-size: 1.1rem;
 }
 
 .city-country {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-top: -1.6rem;
 }
 
 .day {
   font-size: 1rem;
   text-transform: capitalize;
+  padding: 2px 0;
 }
 
-.icon {
-  margin-top: -2rem;
-}
-
-.toggle {
-  position: absolute;
-  right: 1rem;
-  top: 2rem;
-  background: transparent;
-  border: 1px solid black;
-  padding: 5px 10px;
-  border-radius: 2rem;
-}
-
-/* toggler */
-input#toggle {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-label div {
-  background: white;
-  width: 3rem;
-  padding: 4px 5px;
-  display: flex;
-  font-size: 12px;
-  border-radius: 1rem;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* .slider {
-  background: lightblue;
-  border-radius: 13px;
-  height: 1.5rem;
-  width: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-.slide-right {
-  animation: slideInLeft;
-  animation-duration: 0.5s;
-  background: lightblue;
-  border-radius: 13px;
-  height: 1.5rem;
-  width: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide-left {
-  animation: slideInRight;
-  animation-duration: 0.5s;
-  background: lightblue;
-  border-radius: 13px;
-  height: 1.5rem;
-  width: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.temp {
-  padding: 1.5rem 0;
-  font-size: 4rem;
+/* extra info */
+.extra {
+  padding-top: 1.5rem;
+  font-size: 1rem;
 }
 
 .feels-like,
 .humidity {
-  font-size: 1.1rem;
   display: inline-block;
   text-transform: capitalize;
 }
@@ -189,16 +128,60 @@ label div {
   padding-left: 5px;
 }
 
-.animate {
-  animation: zoomInDown;
-  animation-duration: 1s;
-}
-
+/* error */
 .error {
   font-size: 1.3rem;
   text-transform: capitalize;
+  text-shadow: -1px 1px 1px red;
 }
 
 .hide {
   visibility: hidden;
+}
+
+/* backgrounds */
+.clear-sky {
+  background: #e0eafc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #cfdef3,
+    #e0eafc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #cfdef3,
+    #e0eafc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.mist {
+  background: #304352; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #304352,
+    #d7d2cc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #304352,
+    #d7d2cc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.rain {
+  background: #73c8a9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #73c8a9,
+    #373b44
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #73c8a9,
+    #373b44
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.snow {
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }

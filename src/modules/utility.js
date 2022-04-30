@@ -1,9 +1,5 @@
 let kelvinToCelsius = (kelvin) => `${Math.round(kelvin - 273.15)}°C`;
 
-let celsiusToFahrenheit = (c) => `${Math.round(c * (9 / 5) + 32)}°F`;
-
-let fahrenheitToCelsius = (f) => `${Math.round((f - 32) * (5 / 9))}°C`;
-
 let getDayName = () => {
   let dayList = [
     "sunday",
@@ -25,22 +21,39 @@ function showError(err) {
   errorContainer.classList.remove("hide");
 }
 
-let getDigits = (str) => {
-  let digits = str.match(/\d+/g).join("");
-  return Number(digits);
-};
-
 function validateInput() {
   let dataInput = document.querySelector(".cityNameInput");
   return dataInput.value !== "" ? true : false;
 }
 
+function changeBackground(code) {
+  let container = document.querySelector("#container");
+  switch (true) {
+    case code === "09d" || code === "09n" || code === "10d" || code === "10n":
+      container.removeAttribute("class");
+      container.classList.add("rain");
+      break;
+
+    case code === "11d" || code === "11n" || code === "50d" || code === "50n":
+      container.removeAttribute("class");
+      container.classList.add("mist");
+      break;
+
+    case code === "13d" || code === "13n":
+      container.removeAttribute("class");
+      container.classList.add("snow");
+      break;
+
+    default:
+      container.removeAttribute("class");
+      container.classList.add("clear-sky");
+  }
+}
+
 export {
   kelvinToCelsius,
-  celsiusToFahrenheit,
-  fahrenheitToCelsius,
   getDayName,
   showError,
-  getDigits,
   validateInput,
+  changeBackground,
 };
