@@ -1,4 +1,3 @@
-import "animate.css";
 import { getData, arrangeData } from "./modules/api-data.js";
 import {
   kelvinToCelsius as kToC,
@@ -16,7 +15,6 @@ document.querySelector(".search img").src = searchImg;
 
 function showData() {
   document.querySelector(".main").classList.remove("hide");
-  document.querySelector(".main").classList.add("animate");
   document.querySelector(".error").classList.add("hide");
 }
 
@@ -32,6 +30,7 @@ function displayWeather(city, converter) {
 }
 
 // events
+// to get location
 let statusBtn = document.querySelector(".status");
 statusBtn.addEventListener("click", getLocation);
 
@@ -42,6 +41,15 @@ searchBtn.addEventListener("click", () => {
     displayWeather(cityName, kToC);
   } else {
     showError("Please enter a city name");
+  }
+});
+
+// when enter key is pressed
+window.addEventListener("keydown", (e) => {
+  let city = document.querySelector(".cityNameInput").value;
+  if (e.key === "Enter" && validateInput()) {
+    e.preventDefault();
+    displayWeather(city, kToC);
   }
 });
 

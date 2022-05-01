@@ -29,7 +29,7 @@ async function getData(city) {
 // display api data
 function arrangeData(obj, converter) {
   changeBackground(obj.iconCode);
-  console.log(obj.iconCode);
+
   let description = document.querySelector(".desc");
   description.textContent = obj.description;
 
