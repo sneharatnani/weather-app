@@ -146,6 +146,11 @@ header {
   background: linear-gradient(to top, #cfdef3, #e0eafc);
 }
 
+.cloud {
+  background: #e0eafc;
+  background: linear-gradient(to top, #3498db, #e0f7fa);
+}
+
 .mist {
   background: #304352;
   background: -webkit-linear-gradient(to top, #304352, #d7d2cc);

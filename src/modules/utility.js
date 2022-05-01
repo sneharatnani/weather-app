@@ -29,6 +29,11 @@ function validateInput() {
 function changeBackground(code) {
   let container = document.querySelector("#container");
   switch (true) {
+    case code === "03d" || code === "03n" || code === "04d" || code === "04n":
+      container.removeAttribute("class");
+      container.classList.add("cloud");
+      break;
+
     case code === "09d" || code === "09n" || code === "10d" || code === "10n":
       container.removeAttribute("class");
       container.classList.add("rain");
