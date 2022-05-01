@@ -15,7 +15,7 @@ async function success(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let myLocation = await fetch(
-    `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=9814c6dc9ff4e95b4f19390d2a44256d`,
+    `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=9814c6dc9ff4e95b4f19390d2a44256d`,
     { mode: "cors" }
   );
 
