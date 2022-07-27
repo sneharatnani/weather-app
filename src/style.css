@@ -168,6 +168,12 @@ header {
 }
 
 /* media queries */
+@media screen and (min-width: 1400px) {
+  #container {
+    width: 22rem;
+  }
+}
+
 @media screen and (max-width: 992px) {
   #container {
     width: 45vw;
