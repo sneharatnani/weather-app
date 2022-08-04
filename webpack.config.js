@@ -12,11 +12,8 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      // title: "Weather App",
       template: "./src/template.html",
       favicon: "./src/assets/favicon-32x32.png",
-      // inject: "body",
-      // alwaysWriteToDisk: true,
     }),
   ],
 

@@ -1,53 +1,42 @@
-import { getData, arrangeData } from "./modules/api-data.js";
-import {
-  kelvinToCelsius as kToC,
-  showError,
-  validateInput,
-} from "./modules/utility.js";
-import getLocation from "./modules/current-status.js";
 import "./style.css";
+import { arrangeData, showError } from "./modules/view.js";
+import validateInput from "./modules/utils/validate.js";
+import getLocation from "./modules/currentLocation.js";
 import locationIcon from "./assets/location.svg";
 import searchImg from "./assets/search.svg";
+import extractData from "./modules/weatherData.js";
+import kToC from "./modules/utils/kelvinToCelsius.js";
 
-// set location and search icons
 document.querySelector(".location-icon").src = locationIcon;
 document.querySelector(".search img").src = searchImg;
-
-function showData() {
-  document.querySelector(".main").classList.remove("hide");
-  document.querySelector(".error").classList.add("hide");
-}
+const searchBtn = document.querySelector(".search");
+const cityNameInput = document.querySelector(".cityNameInput");
 
 function displayWeather(city, converter) {
-  getData(city)
-    .then((data) => {
-      arrangeData(data, converter);
-      showData();
+  extractData(city)
+    .then((dataObj) => {
+      arrangeData(dataObj, converter);
+      document.querySelector(".main").classList.remove("hide");
+      document.querySelector(".error").classList.add("hide");
     })
-    .catch(() => {
-      showError("City not found please try again");
-    });
+    .catch((err) => showError(err.message));
 }
 
 // events
-// to get location
-let statusBtn = document.querySelector(".status");
-statusBtn.addEventListener("click", getLocation);
+document.querySelector(".status").addEventListener("click", getLocation);
 
-let searchBtn = document.querySelector(".search");
 searchBtn.addEventListener("click", () => {
-  let cityName = document.querySelector(".cityNameInput").value;
-  if (validateInput()) {
-    displayWeather(cityName, kToC);
+  const city = cityNameInput.value;
+  if (validateInput(city)) {
+    displayWeather(city, kToC);
   } else {
     showError("Please enter a city name");
   }
 });
 
-// when enter key is pressed
 window.addEventListener("keydown", (e) => {
-  let city = document.querySelector(".cityNameInput").value;
-  if (e.key === "Enter" && validateInput()) {
+  let city = cityNameInput.value;
+  if (e.key === "Enter" && validateInput(city)) {
     e.preventDefault();
     displayWeather(city, kToC);
   }
