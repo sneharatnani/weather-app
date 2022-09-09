@@ -42,6 +42,6 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-window.onload = () => displayWeather("new york", kToC);
+window.onload = () => displayWeather("hyderabad", kToC);
 
 export default displayWeather;
