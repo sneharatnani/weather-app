@@ -26,7 +26,7 @@ function displayWeather(city, converter) {
 document.querySelector(".status").addEventListener("click", getLocation);
 
 searchBtn.addEventListener("click", () => {
-  const city = cityNameInput.value;
+  const city = cityNameInput.value.trim();
   if (validateInput(city)) {
     displayWeather(city, kToC);
   } else {
@@ -35,7 +35,7 @@ searchBtn.addEventListener("click", () => {
 });
 
 window.addEventListener("keydown", (e) => {
-  let city = cityNameInput.value;
+  let city = cityNameInput.value.trim();
   if (e.key === "Enter" && validateInput(city)) {
     e.preventDefault();
     displayWeather(city, kToC);
