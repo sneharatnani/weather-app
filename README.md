@@ -26,6 +26,8 @@ A weather app; that shows the current weather of a city. It changes the backgrou
 
 ## Getting Started
 
+### Project Setup
+
 ```bash
 # clone repo
 git clone https://github.com/sneharatnani/weather-app.git
@@ -35,7 +37,16 @@ cd weather-app
 
 # installing dependencies
 npm install
+```
 
+### API Key Setup
+
+- Get your API key from [OpenWeatherMap](https://openweathermap.org/)
+- Rename .env.example to .env and provide your API Key.
+
+### Run The Application
+
+```bash
 # starting server
 npm start
 
